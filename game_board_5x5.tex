@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{dessertdice}
+
+\pagecolor{black}
+\begin{document}
+\begin{tikzpicture}
+
+\foreach \i in {0mm, 20mm, 40mm, 60mm, 80mm, 100mm}
+	\draw[ultra thick, white] (0mm,\i) -- (100mm,\i);
+
+\foreach \i in {0mm, 20mm, 40mm, 60mm, 80mm, 100mm}
+	\draw[ultra thick, white] (\i, 0mm) -- (\i, 100mm);
+
+\draw[ultra thick, white] (50mm,100mm) -- (100mm,100mm) -- (100mm,0mm) -- (0mm,0mm) -- (0mm,100mm) -- cycle;
+
+\path (50mm-2.5in,50mm-2.5in) -- (50mm+2.5in, 50mm+2.5in);
+%\foreach \i in {-10mm, 110mm}
+%	\foreach \j in {-10mm, 110mm}	
+%		\pic at (\i,\j) {guidecross={black}};
+		
+
+\end{tikzpicture}
+\end{document}

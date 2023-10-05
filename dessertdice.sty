@@ -1,22 +1,99 @@
 \usepackage[dvipsnames]{xcolor}
+\definecolor{JelloRed}{HTML}{E36861}
+\definecolor{ScrollYellow}{HTML}{FCEA81}
+\definecolor{MacaronBlue}{HTML}{A8D7E4}
+\definecolor{IceCreamPurple}{HTML}{AA99CF}
+\definecolor{PopsicleGreen}{HTML}{7CE470}
+
 \usepackage{tikz}
 
+\usepackage{calc}
+
 \usepackage{fontspec}
+\setmainfont{Tex Gyre Schola}
+
+\newlength{\cardwidth}
+\newlength{\cardheight}
+\newlength{\bleed}
+\newlength{\horizspace}
+\newlength{\vertspace}
+\newlength{\vertdist}
+\newlength{\horizdist}
+
+\setlength{\cardwidth}{2.5in}
+\setlength{\cardheight}{2.5in}
+\setlength{\bleed}{0.0625in}
+\setlength{\horizspace}{0.0625in}
+\setlength{\horizdist}{\cardwidth + 2\bleed + \horizspace}
+\setlength{\vertspace}{0.0625in}
+\setlength{\vertdist}{\cardheight + 2\bleed + \vertspace}
+
+\tikzset{guidecross/.pic={
+	\draw[#1] (-\bleed,0) -- (\bleed,0);
+	\draw[#1] (0, -\bleed) -- (0, \bleed);
+}}
+
+\tikzset{cutguide/.pic={
+	\pic () at (-\cardwidth/2, \cardheight/2) {guidecross={#1}};
+	\pic () at (\cardwidth/2, \cardheight/2) {guidecross={#1}};
+	\pic () at (-\cardwidth/2, -\cardheight/2) {guidecross={#1}};
+	\pic () at (\cardwidth/2, -\cardheight/2) {guidecross={#1}};
+}}
+
+\tikzset{cardbackpattern/.pic={
+	\foreach \i in {-1.25, -1.0,...,1.25}
+		\foreach \j in {-1.25, -1.0, ..., 1.25}
+			\draw[very thick, #1] (\i,\j) circle (0.105);
+
+	\foreach \i in {-1.375, -1.125, -0.875,...,1.125, 1.375}
+		\foreach \j in {-1.375, -1.125, ..., 1.375}
+			\draw[very thick, #1] (\i,\j) circle (0.105);
+}}
+
+\tikzset{cardbackprintable/.pic={
+	\begin{scope}
+	\clip (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+	% Pattern for card back
+	\path[fill=white] (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+
+	\pic () at (0,0) {cardbackpattern=black};
+	% Cutting guides for corners of the cards	
+	\pic () at (0,0) {cutguide={white}};
+\end{scope}
+}}
+
+\tikzset{cardfrontprintable/.pic={
+	\begin{scope}
+	\clip (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+	% Pattern for card back
+	\pic () at (0,0) {#1};
+	% Cutting guides for corners of the cards	
+	\pic () at (0,0) {cutguide={black}};
+\end{scope}
+}}
+
 
 \tikzset{jelloface/.pic={
 \node[draw, minimum height=15mm, minimum width=15mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.14]{Images/SweetsIcons/jello.png}};
 }}
 
-\tikzset{macaroonface/.pic={
-\node[draw, minimum height=15mm, minimum width=15mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.12]{Images/SweetsIcons/macaroon.png}};
-}}
-
-\tikzset{cookieface/.pic={
-\node[draw, minimum height=15mm, minimum width=15mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.12]{Images/SweetsIcons/cookies.png}};
-}}
-
-\tikzset{cakeface/.pic={
-\node[draw, minimum height=15mm, minimum width=15mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.115]{Images/SweetsIcons/cake.png}};
+\tikzset{macaronface/.pic={
+\node[draw, minimum height=15mm, minimum width=15mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.12]{Images/SweetsIcons/macaron.png}};
 }}
 
 \tikzset{icecreamface/.pic={
@@ -25,4 +102,37 @@
 
 \tikzset{jellyrollface/.pic={
 \node[draw, minimum height=15mm, minimum width=15mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.12]{Images/SweetsIcons/jellyroll.png}};
+}}
+
+\tikzset{popsicleface/.pic={
+\node[draw, minimum height=15mm, minimum width=15mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.12]{Images/SweetsIcons/popsicle_green.png}};
+}}
+
+\tikzset{licoriceface/.pic={
+\node[draw, minimum height=15mm, minimum width=15mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.4]{Images/SweetsIcons/licorice.png}};
+}}
+
+
+\tikzset{jellofront/.pic={
+\node at (0,0) {\includegraphics[scale=0.5]{Images/SweetsIcons/jello.png}};
+}}
+
+\tikzset{macaronfront/.pic={
+\node at (0,0) {\includegraphics[scale=0.5]{Images/SweetsIcons/macaron.png}};
+}}
+
+\tikzset{icecreamfront/.pic={
+\node at (0,0) {\includegraphics[scale=0.5]{Images/SweetsIcons/icecream.png}};
+}}
+
+\tikzset{jellyrollfront/.pic={
+\node at (0,0) {\includegraphics[scale=0.5]{Images/SweetsIcons/jellyroll.png}};
+}}
+
+\tikzset{popsiclefront/.pic={
+\node at (0,0) {\includegraphics[scale=0.5]{Images/SweetsIcons/popsicle_green.png}};
+}}
+
+\tikzset{licoricefront/.pic={
+\node at (0,0) {\includegraphics[scale=1.65]{Images/SweetsIcons/licorice.png}};
 }}

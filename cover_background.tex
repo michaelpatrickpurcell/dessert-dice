@@ -1,0 +1,22 @@
+\documentclass[a6paper, 12pt, parskip=half, DIV=14]{scrartcl}
+
+\usepackage{dessertdice}
+\usepackage{eso-pic}
+\pagestyle{empty}
+\begin{document}
+
+\begin{titlepage}
+\AddToShipoutPictureBG{
+\begin{tikzpicture}[remember picture, overlay]
+%	\node () at (current page.center) {\includegraphics[width=\pagewidth, height=\pageheight]{Images/aloft_cover_background.png}};
+	\node () at (current page.center) {\includegraphics[width=\pagewidth, height=\pageheight]{Images/blackboard.png}};
+\end{tikzpicture}
+}
+
+\enlargethispage{3.5\baselineskip}
+\Huge
+\phantom{a}
+\end{titlepage}
+
+
+\end{document}
