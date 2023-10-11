@@ -1,5 +1,6 @@
 \usepackage[dvipsnames]{xcolor}
 \definecolor{JelloRed}{HTML}{E36861}
+\definecolor{JelloOrange}{HTML}{E07F45}
 \definecolor{ScrollYellow}{HTML}{FCEA81}
 \definecolor{MacaronBlue}{HTML}{A8D7E4}
 \definecolor{IceCreamPurple}{HTML}{AA99CF}
@@ -74,22 +75,26 @@
 
 \tikzset{cardfrontprintable/.pic={
 	\begin{scope}
-	\clip (-\cardwidth/2 - \bleed, 0in) --%
-	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
-	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
-	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
-	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
-	      cycle;
+%	\clip (-\cardwidth/2 - \bleed, 0in) --%
+%	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+%	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+%	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+%	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+%	      cycle;
 	% Pattern for card back
 	\pic () at (0,0) {#1};
 	% Cutting guides for corners of the cards	
-	\pic () at (0,0) {cutguide={black}};
+	\pic () at (0,0) {cutguide={white}};
 \end{scope}
 }}
 
 
 \tikzset{jelloface/.pic={
 \node[draw, minimum height=15mm, minimum width=15mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.14]{Images/SweetsIcons/jello.png}};
+}}
+
+\tikzset{jelloorangeface/.pic={
+\node[draw, minimum height=15mm, minimum width=15mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.14]{Images/SweetsIcons/jello_orange.png}};
 }}
 
 \tikzset{macaronface/.pic={
@@ -112,9 +117,60 @@
 \node[draw, minimum height=15mm, minimum width=15mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.4]{Images/SweetsIcons/licorice.png}};
 }}
 
+\tikzset{jelloface2/.pic={
+\node[draw, minimum height=19mm, minimum width=19mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.14]{Images/SweetsIcons/jello.png}};
+}}
+
+\tikzset{jelloorangeface2/.pic={
+\node[draw, minimum height=19mm, minimum width=19mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.14]{Images/SweetsIcons/jello_orange.png}};
+}}
+
+\tikzset{macaronface2/.pic={
+\node[draw, minimum height=19mm, minimum width=19mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.12]{Images/SweetsIcons/macaron.png}};
+}}
+
+\tikzset{icecreamface2/.pic={
+\node[draw, minimum height=19mm, minimum width=19mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.12]{Images/SweetsIcons/icecream.png}};
+}}
+
+\tikzset{jellyrollface2/.pic={
+\node[draw, minimum height=19mm, minimum width=19mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.12]{Images/SweetsIcons/jellyroll.png}};
+}}
+
+\tikzset{popsicleface2/.pic={
+\node[draw, minimum height=19mm, minimum width=19mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.12]{Images/SweetsIcons/popsicle_green.png}};
+}}
+
+\tikzset{licoriceface2/.pic={
+\node[draw, minimum height=19mm, minimum width=19mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.4]{Images/SweetsIcons/licorice.png}};
+}}
+
+\tikzset{jellyrollicon/.pic={
+\node[draw, minimum height=6mm, minimum width=6mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.05]{Images/SweetsIcons/jellyroll.png}};
+}}
+
+\tikzset{macaronicon/.pic={
+\node[draw, minimum height=6mm, minimum width=6mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.05]{Images/SweetsIcons/macaron.png}};
+}}
+
+\tikzset{icecreamicon/.pic={
+\node[draw, minimum height=6mm, minimum width=6mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.05]{Images/SweetsIcons/icecream.png}};
+}}
+
+\tikzset{jelloicon/.pic={
+\node[draw, minimum height=6mm, minimum width=6mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.0575]{Images/SweetsIcons/jello.png}};
+}}
+
+\tikzset{jelloorangeicon/.pic={
+\node[draw, minimum height=6mm, minimum width=6mm, inner sep=0pt] at (0,0) {\includegraphics[scale=0.0575]{Images/SweetsIcons/jello_orange.png}};
+}}
 
 \tikzset{jellofront/.pic={
 \node at (0,0) {\includegraphics[scale=0.5]{Images/SweetsIcons/jello.png}};
+}}
+
+\tikzset{jelloorangefront/.pic={
+\node at (0,0) {\includegraphics[scale=0.5]{Images/SweetsIcons/jello_orange.png}};
 }}
 
 \tikzset{macaronfront/.pic={
@@ -136,3 +192,12 @@
 \tikzset{licoricefront/.pic={
 \node at (0,0) {\includegraphics[scale=1.65]{Images/SweetsIcons/licorice.png}};
 }}
+
+\tikzset{pics/die/.style n args={2}{
+code={
+	\pic at (0,0) {#1};
+	\node[minimum width=16mm, minimum height=16mm, inner sep=0pt, rounded corners=1mm, fill=white] at (0,0) {};
+	\pic at (0,0) {#1};
+	\node[draw=#2, line width=2mm, minimum width=16mm, minimum height=16mm, inner sep=0pt, rounded corners=1mm] at (0,0) {};
+
+}}}

@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{dessertdice}
+
+\pagecolor{black}
+\begin{document}
+\begin{tikzpicture}
+\path (-4in, -1.5in) -- (4in, 1.5in);
+\pic[rotate=15, transform shape] at (-45mm,25mm) {die={jelloorangeface}{ScrollYellow}};
+\pic[rotate=-40, transform shape] at (55mm,25mm) {die={macaronface}{ScrollYellow}};
+\pic[rotate=70, transform shape] at (0mm,-25mm) {die={icecreamface}{ScrollYellow}};
+
+\pic[rotate=135, transform shape] at (80mm,5mm) {die={icecreamface}{JelloOrange}};
+\pic[rotate=15, transform shape] at (-25mm,-20mm) {die={jellyrollface}{JelloOrange}};
+\pic[rotate=-30, transform shape] at (-10mm,5mm) {die={macaronface}{JelloOrange}};
+
+\pic[rotate=-50, transform shape] at (20mm,20mm) {die={jellyrollface}{MacaronBlue}};
+\pic[rotate=115, transform shape] at (25mm,-10mm) {die={jelloorangeface}{MacaronBlue}};
+\pic[rotate=5, transform shape] at (-50mm,-5mm) {die={icecreamface}{MacaronBlue}};
+
+\pic[rotate=-30, transform shape] at (-70mm,15mm) {die={macaronface}{IceCreamPurple}};
+\pic[rotate=-120, transform shape] at (-80mm,-15mm) {die={jelloorangeface}{IceCreamPurple}};
+\pic[rotate=60, transform shape] at (50mm,0mm) {die={jellyrollface}{IceCreamPurple}};
+
+\end{tikzpicture}
+\end{document}
