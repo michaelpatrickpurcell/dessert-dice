@@ -1,0 +1,136 @@
+\documentclass[a5paper, DIV=18, 12pt]{scrartcl}
+%\usepackage{balloonspectacular}
+\usepackage{multicol}
+\setlength\columnsep{0.5cm}
+\usepackage{enumitem}
+\usepackage[margin=0.925cm]{geometry}
+
+
+\usepackage{fontspec}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\setmainfont[Scale=1.0]{Roboto}
+\usepackage{eso-pic}
+
+\setkomafont{section}{\setmainfont[Scale=1.125]{Londrina-Solid}\LARGE}
+\setkomafont{subsection}{\setmainfont{Londrina-Solid}\Large}
+\setkomafont{subsubsection}{\setmainfont{Londrina-Solid}\large}
+
+% Adjust spacing before and after section headings
+\RedeclareSectionCommand[
+  runin=false,
+  beforeskip=0.25\baselineskip,
+  afterskip=0.5\baselineskip
+]{section}
+
+% Adjust spacing before and after subsection headings
+\RedeclareSectionCommand[
+  runin=false,
+  beforeskip=1.0\baselineskip,
+  afterskip=0.25\baselineskip
+]{subsection}
+
+% Adjust spacing before and after subsubsection headings
+\RedeclareSectionCommand[
+  runin=false,
+  beforeskip=1.0\baselineskip,
+  afterskip=0.25\baselineskip
+]{subsubsection}
+
+\definecolor{JelloRed}{HTML}{E36861}
+\definecolor{JelloOrange}{HTML}{E07F45}
+\definecolor{ScrollYellow}{HTML}{FCEA81}
+\definecolor{MacaronBlue}{HTML}{A8D7E4}
+\definecolor{IceCreamPurple}{HTML}{AA99CF}
+\definecolor{PopsicleGreen}{HTML}{7CE470}
+
+\color{white}
+\nopagecolor
+\pagestyle{empty}
+\begin{document}
+\AddToShipoutPictureBG{
+\begin{tikzpicture}[remember picture, overlay]
+	\node () at (current page.center) {\includegraphics[width=\pagewidth, height=\pageheight]{Images/blackboard.png}};
+\end{tikzpicture}
+}
+
+\enlargethispage{0.5\baselineskip}
+\vspace{-1ex}
+\begin{center}
+\includegraphics[width=\textwidth]{Images/dessert_dice_banner.png}
+%{\setmainfont[Scale=2.9]{Londrina-Solid}\Huge{}Dessert\ \ Dice}
+\end{center}
+%\vspace{-0.0ex}
+\includegraphics[scale=0.125]{Images/player_count_icon.png} {\setmainfont[Scale=1.25]{Londrina-Solid}\Huge \raisebox{6.55pt}{\textcolor{IceCreamPurple}{:\ 2-4}}} \hfill \includegraphics[scale=0.125]{Images/player_age_icon.png} {\setmainfont[Scale=1.25]{Londrina-Solid}\Huge \raisebox{6.55pt}{\textcolor{IceCreamPurple}{:\ 12+}}}\hfill \includegraphics[scale=0.125]{Images/play_time_icon.png} {\setmainfont[Scale=1.25]{Londrina-Solid}\Huge \raisebox{6.55pt}{\textcolor{IceCreamPurple}{:\ 10-15}}}
+%\vspace{-0.25ex}
+\flushleft
+Dessert Dice is a devilishly delicious dice-placement game. Choose between placing new dice on the board or moving those that are already there to outscore your opponents. Indulge in a decadent game of strategy and guile and play Dessert Dice today!
+
+\flushleft
+\vspace{-1ex}
+\begin{multicols}{2}
+\section*{\textcolor{ScrollYellow}{Features}}
+%Eruption is an engaging and\\challenging dexterity game that\\comes in a small package.
+%
+%\vspace{1.25ex}
+%
+%It uses only readily-available\\components to create a unique\\game experience for players.
+\begin{itemize}[leftmargin=*, nosep]
+\item Small enough to bring along to your favorite restaurant.
+\vspace{1ex}
+\item Short and sweet, it's a perfect way to end an evening.
+\vspace{1ex}
+\item Pack it away as you play. No~one has to do the dishes!
+\end{itemize}
+
+\vfill\null\columnbreak
+
+\section*{\textcolor{JelloOrange}{Components}}
+\begin{itemize}[leftmargin=*, nosep]
+	\item 25 dessert dice
+	\begin{itemize}[leftmargin=*, nosep]
+		\vspace{0.4ex}
+		\item 6 dice in each of four different custom designs 
+		\vspace{0.5ex}
+		\item 1 blank die
+	\end{itemize}
+	\vspace{0.5ex}
+	\item 4 dessert-icon tiles
+	\vspace{0.5ex}
+	\item 1 5x5 game board
+\end{itemize}
+\end{multicols}
+\vspace{-4ex}
+\begin{center}
+\includegraphics[width=\textwidth]{Images/dice_separator.png}
+\end{center}
+
+\vspace{-1ex}
+\section*{\textcolor{MacaronBlue}{\phantom{a}\hfill{}Gameplay and Mechanisms\hfill{}\phantom{a}}}
+\begin{multicols}{2}
+Start by rolling all of the dice and assigning a secret dessert icon to each player.
+
+\vspace{1ex}
+
+On your turn, either place a die onto the board or move a die on the board by tipping it into an adjacent square.
+
+\vfill\null\textcolor{IceCreamPurple}{\textbf{Design:} Michael Purcell}\columnbreak
+%\section*{\phantom{Gameplay}}
+
+The game ends immediately after all of the dice have been placed on the board.
+
+\vspace{1ex}
+
+You win if you have the biggest cluster of dice on which your dessert icon is displayed at the end of the game.
+\vfill\null\textcolor{IceCreamPurple}{\textbf{Contact:} mike@armiger.games}
+\end{multicols}
+%\begin{center}
+%%\includegraphics[width=\textwidth]{Images/sell_sheet_diagram.png}
+%\end{center}
+%\vspace{-7ex}
+%%\hrule
+%%\vspace{2ex}
+%\textbf{Design:} Michael Purcell \hfill \textbf{Contact:} ttkttkt@gmail.com
+
+
+\end{document}
